@@ -54,8 +54,8 @@ public class Game {
             // бумага(2) побеждает камень(0)
         }
         if (
-                (playerMove == 0 && computerMove == 1) || (playerMove == 1 && computerMove == 2) ||
-                        (playerMove == 2 && computerMove == 0)
+                (playerMove == 0 && computerMove == 1 || playerMove == 1 && computerMove == 2 ||
+                        playerMove == 2 && computerMove == 0)
         ) {
             return "Вы выиграли!";
         } else {

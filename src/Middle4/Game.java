@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Game {
     private Player player1;
     private Player player2;
+    static final int MAX_JUMPS = 30;
 
     public Game(String name1, String name2) {
         this.player1 = new Player(name1);
@@ -27,7 +28,7 @@ public class Game {
             player1.getFrog().jump(steps1);
             System.out.println(player1.getName() + ", всего прыжков " + player1.getFrog().getJumpCount());
 
-            if (checkWin(player1.getFrog())) {
+            if (player1.getFrog().getJumpCount() >= MAX_JUMPS) {
                 System.out.println("Поздравляем, " + player1.getName() + " Вы выиграли!");
                 gameRunning = false;
                 continue;
@@ -41,14 +42,11 @@ public class Game {
             player2.getFrog().jump(steps2);
             System.out.println(player2.getName() + ", всего прыжков " + player2.getFrog().getJumpCount());
 
-            if (checkWin(player2.getFrog())) {
+            if (player2.getFrog().getJumpCount() >= MAX_JUMPS) {
                 System.out.println("Поздравляем, " + player2.getName() + " Вы выиграли!");
                 gameRunning = false;
             }
         }
     }
-
-    private boolean checkWin(Frog frog) {
-        return frog.getJumpCount() >= 30;
-    }
 }
+
